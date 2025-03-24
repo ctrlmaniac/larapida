@@ -10,7 +10,7 @@
     "moduleResolution": "bundler"
   },
   "files": [],
-  "include": [],
+  "include": ["types/global.d.ts"],
   "references": [
     {
       "path": "./tsconfig.app.json"

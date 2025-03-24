@@ -19,7 +19,8 @@
     "@swc/cli": "~0.3.12",
     "@swc/core": "~1.5.7",
     "@swc/helpers": "~0.5.11",
-    "@types/node": "^20.0.0",
+    "@types/bcrypt": "^5.0.2",
+    "@types/node": "^20.17.27",
     "@types/react": "19.0.0",
     "@types/react-dom": "19.0.0",
     "@vitejs/plugin-react": "^4.2.0",
@@ -35,7 +36,9 @@
     "jsdom": "~22.1.0",
     "nx": "20.6.2",
     "prettier": "^2.6.2",
+    "prisma": "^6.5.0",
     "tslib": "^2.3.0",
+    "tsx": "^4.19.3",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.19.0",
     "vite": "^6.0.0",
@@ -44,8 +47,10 @@
   "dependencies": {
     "@emotion/react": "11.11.1",
     "@emotion/styled": "11.11.0",
+    "@prisma/client": "^6.5.0",
     "@react-router/node": "^7.2.0",
     "@react-router/serve": "^7.2.0",
+    "bcrypt": "^5.1.1",
     "isbot": "^4.4.0",
     "react": "19.0.0",
     "react-dom": "19.0.0",
@@ -55,5 +60,9 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "prisma": {
+    "schema": "apps/website/prisma/schema.prisma",
+    "seed": "tsx apps/website/prisma/seed/seed.ts"
   }
 }
