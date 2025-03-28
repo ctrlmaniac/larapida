@@ -58,8 +58,14 @@
       },
       "library": {
         "style": "@emotion/styled",
-        "linter": "eslint"
+        "linter": "eslint",
+        "unitTestRunner": "none"
       }
+    }
+  },
+  "release": {
+    "version": {
+      "preVersionCommand": "npx nx run-many -t build"
     }
   }
 }
