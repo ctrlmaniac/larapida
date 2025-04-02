@@ -1,16 +1,49 @@
+import compression from "compression";
 import express from 'express';
-import * as path from 'path';
+import morgan from "morgan";
+import { join } from "path";
+
+const HOST = process.env.HOST ?? 'localhost';
+const PORT = Number.parseInt(process.env.PORT || "3000");
+const DEVELOPMENT = process.env.NODE_ENV;
+const ROOTDIR = process.env.ROOTDIR ?? join()
+
 
 const app = express();
 
-app.use('/assets', express.static(path.join(__dirname, 'assets')));
+app.use(compression);
+app.disable("x-powered-by");
 
-app.get('/api', (req, res) => {
-  res.send({ message: 'Welcome to server!' });
+if (DEVELOPMENT) {
+  console.log("starting development server");
+
+  const viteDevServer = await import("vite").then((vite) =>
+    vite.createServer({
+      server: { middlewareMode: true }
+    })
+  );
+
+  app.use(viteDevServer.middlewares);
+
+  app.use(async (req, res, next) => {
+    try {
+      const source = await viteDevServer.ssrLoadModule("./app.ts");
+      return await source.app(req, res, next);
+    } catch (error) {
+      if (typeof error === "object" && error instanceof Error) {
+        viteDevServer.ssrFixStacktrace(error);
+      }
+      next(error);
+    }
+  });
+} else {
+  console.log("starting production server");
+}
+
+app.get('/', (req, res) => {
+  res.send({ message: 'Hello API' });
 });
 
-const port = process.env.PORT || 3333;
-const server = app.listen(port, () => {
-  console.log(`Listening at http://localhost:${port}/api`);
+app.listen(PORT, HOST, () => {
+  console.log(`[ ready ] http://${HOST}:${PORT}`);
 });
-server.on('error', console.error);

@@ -2,8 +2,14 @@
   "name": "@larapida/server",
   "version": "0.0.1",
   "private": true,
+  "type": "module",
   "nx": {
     "targets": {
+      "build": {
+        "outputs": [
+          "{workspaceRoot}/dist/apps/{projectRoot}"
+        ]
+      },
       "serve": {
         "executor": "@nx/js:node",
         "defaultConfiguration": "development",
@@ -24,5 +30,15 @@
         }
       }
     }
+  },
+  "dependencies": {
+    "@react-router/express": "^7.4.1",
+    "compression": "^1.8.0",
+    "express": "^5.1.0",
+    "morgan": "^1.10.0",
+    "react-router": "^7.4.1"
+  },
+  "devDependencies": {
+    "vite": "^6.2.4"
   }
 }
