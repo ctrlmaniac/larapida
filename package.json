@@ -3,9 +3,18 @@
   "version": "0.0.0",
   "license": "UNLICENSED",
   "private": true,
+  "workspaces": [
+    "apps/*",
+    "libs/*"
+  ],
   "scripts": {},
+  "dependencies": {
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
+  },
   "devDependencies": {
     "@nx/js": "20.7.1",
+    "@nx/react": "^20.7.1",
     "@swc-node/register": "~1.9.1",
     "@swc/core": "~1.5.7",
     "@swc/helpers": "~0.5.11",
@@ -15,10 +24,6 @@
     "tslib": "^2.3.0",
     "typescript": "~5.7.2"
   },
-  "workspaces": [
-    "apps/*",
-    "libs/*"
-  ],
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
