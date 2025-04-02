@@ -1,0 +1,28 @@
+{
+  "name": "@larapida/server",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "targets": {
+      "serve": {
+        "executor": "@nx/js:node",
+        "defaultConfiguration": "development",
+        "dependsOn": [
+          "build"
+        ],
+        "options": {
+          "buildTarget": "@larapida/server:build",
+          "runBuildTargetDependencies": false
+        },
+        "configurations": {
+          "development": {
+            "buildTarget": "@larapida/server:build:development"
+          },
+          "production": {
+            "buildTarget": "@larapida/server:build:production"
+          }
+        }
+      }
+    }
+  }
+}

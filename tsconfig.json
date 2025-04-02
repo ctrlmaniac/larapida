@@ -5,6 +5,9 @@
   "references": [
     {
       "path": "./apps/larapidamolinettodotcom"
+    },
+    {
+      "path": "./apps/server"
     }
   ]
 }
