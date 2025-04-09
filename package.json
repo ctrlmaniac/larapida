@@ -2,12 +2,24 @@
   "name": "@larapida/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
   "private": true,
-  "dependencies": {},
+  "scripts": {
+    "prepare": "husky",
+    "commitlint": "commitlint --edit"
+  },
   "devDependencies": {
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
+    "@commitlint/types": "^19.8.0",
     "@nx/js": "20.7.2",
     "@nx/workspace": "20.7.2",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^9.1.7",
     "nx": "20.7.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
