@@ -6,8 +6,43 @@
       "sharedGlobals"
     ],
     "production": [
-      "default"
+      "default",
+      "!{projectRoot}/.eslintrc.json",
+      "!{projectRoot}/eslint.config.mjs"
     ],
     "sharedGlobals": []
+  },
+  "targetDefaults": {
+    "@nx/esbuild:esbuild": {
+      "cache": true,
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "production",
+        "^production"
+      ]
+    }
+  },
+  "plugins": [
+    {
+      "plugin": "@nx/eslint/plugin",
+      "options": {
+        "targetName": "lint"
+      }
+    }
+  ],
+  "generators": {
+    "@nx/node": {
+      "application": {
+        "bundler": "esbuild",
+        "e2eTestRunner": "none",
+        "framework": "none",
+        "linter": "eslint",
+        "unitTestRunner": "none",
+        "docker": false,
+        "useProjectJson": true
+      }
+    }
   }
 }
