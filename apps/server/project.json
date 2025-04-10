@@ -11,6 +11,12 @@
         "{options.outputPath}"
       ],
       "defaultConfiguration": "production",
+      "dependsOn": [
+        {
+          "projects": "www",
+          "target": "build"
+        }
+      ],
       "options": {
         "platform": "node",
         "outputPath": "dist/apps/server",
