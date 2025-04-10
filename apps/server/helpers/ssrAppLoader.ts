@@ -6,10 +6,10 @@ export default async function ssrAppLoader(module: string, app: Application) {
   const build: ServerBuild = await import(module);
 
   app.all(
-    '*',
+    '/{*any}',
     createRequestHandler({
       mode: 'production',
-      build,
+      build: build,
     })
   );
 }

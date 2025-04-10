@@ -17,11 +17,15 @@
         "format": [
           "cjs"
         ],
-        "bundle": false,
+        "bundle": true,
         "main": "apps/server/main.ts",
         "tsConfig": "apps/server/tsconfig.app.json",
         "assets": [
-          "apps/server/www"
+          {
+            "input": "apps/server/www",
+            "glob": "**/*",
+            "output": "www"
+          }
         ],
         "generatePackageJson": true,
         "esbuildOptions": {
