@@ -15,5 +15,5 @@ const wwwModulePath = join(__dirname, 'www/server/index.js');
 ssrAppLoader(wwwModulePath, app);
 
 app.listen(appConfig.PORT, () => {
-  console.log('App listening on port ' + appConfig.PORT);
+  console.log(`App listening at http://localhost:${appConfig.PORT}`);
 });

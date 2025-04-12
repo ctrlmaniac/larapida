@@ -7,7 +7,8 @@ import {
   type MetaFunction,
   type LinksFunction,
 } from 'react-router';
-import { CssBaseline, CssVarsProvider } from '@mui/joy';
+import { Box, Button, CssBaseline, CssVarsProvider, Sheet, Stack } from '@mui/joy';
+import { IconMenu2 } from '@tabler/icons-react';
 
 export const meta: MetaFunction = () => [
   {
@@ -63,8 +64,24 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
-        <ScrollRestoration />
+        <Box sx={{ display: "grid", gridTemplateColumns: "1fr", gridTemplateRows: "56px 1fr", gridColumnGap: "0px", gridRowGap: "0px", height: "100vh" }}>
+          <Sheet variant='solid' sx={{ backgroundColor: "background.body" }}>
+            <Stack direction="row"
+              spacing={2}
+              sx={{
+                m: 1,
+                justifyContent: "flex-start",
+                alignItems: "center",
+              }}>
+              <Button variant='plain'><IconMenu2 /></Button>
+            </Stack>
+          </Sheet>
+
+          <Box sx={{ overflowY: "auto" }}>
+            {children}
+            <ScrollRestoration />
+          </Box>
+        </Box>
         <Scripts />
       </body>
     </html>

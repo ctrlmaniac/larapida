@@ -4,6 +4,9 @@
   "sourceRoot": "apps/server",
   "projectType": "application",
   "tags": [],
+  "implicitDependencies": [
+    "www"
+  ],
   "targets": {
     "build": {
       "executor": "@nx/esbuild:esbuild",
@@ -57,11 +60,16 @@
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
       "dependsOn": [
+        {
+          "projects": "www",
+          "target": "build"
+        },
         "build"
       ],
       "options": {
+        "watch": true,
         "buildTarget": "server:build",
-        "runBuildTargetDependencies": false
+        "runBuildTargetDependencies": true
       },
       "configurations": {
         "development": {

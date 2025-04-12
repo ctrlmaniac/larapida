@@ -1,6 +1,6 @@
-import { Container, Divider, Sheet, Typography } from "@mui/joy";
+import { Container, Divider } from "@mui/joy";
 import { MetaFunction } from "react-router";
-import { Hero } from "../../components";
+import { Header, Hero } from "../../components";
 import ProdottiServizi from "./prodotti-servizi";
 
 export const meta: MetaFunction = () => {
@@ -13,10 +13,7 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   return (
     <Container maxWidth="lg">
-      <Sheet sx={{ my: 6 }}>
-        <Typography level="h1" sx={{ textAlign: "center" }}>La Rapida Molinetto</Typography>
-        <Typography level="h3" sx={{ textAlign: "center" }} gutterBottom>L'artigiano calzolaio nel cuore del centro commerciale</Typography>
-      </Sheet>
+      <Header title="La Rapida Molinetto" subtitle="L'artigiano calzolaio nel cuore del centro commerciale" />
 
       <Hero />
 

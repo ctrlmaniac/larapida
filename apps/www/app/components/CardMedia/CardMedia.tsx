@@ -1,10 +1,12 @@
 import { AspectRatio, Button, ButtonGroup, Card, CardActions, CardContent, CardOverflow, Typography } from "@mui/joy";
 import { FC } from "react";
+import { useNavigate } from "react-router";
 
 interface MediaCardProps {
   title: string;
   shortDescription?: string;
   wallpaper: string;
+  action?: string;
 
   /**
    * @default false
@@ -15,9 +17,12 @@ interface MediaCardProps {
    * @default false
    */
   disableStretch?: false
+
 }
 
-export const CardMedia: FC<MediaCardProps> = ({ title, shortDescription, wallpaper, disabled = false, disableStretch = false }) => {
+export const CardMedia: FC<MediaCardProps> = ({ title, shortDescription, wallpaper, action, disabled = false, disableStretch = false }) => {
+  const navigate = useNavigate();
+
   return (
     <Card variant="outlined" sx={{ width: "100%", height: disableStretch ? 'initial' : "100%" }}>
       <CardOverflow>
@@ -29,10 +34,10 @@ export const CardMedia: FC<MediaCardProps> = ({ title, shortDescription, wallpap
         <Typography level="title-md">{title}</Typography>
         {shortDescription && <Typography level="body-sm">{shortDescription}</Typography>}
       </CardContent>
-      {!disabled && (
+      {(!disabled && action) && (
         <CardActions buttonFlex="1">
           <ButtonGroup variant="outlined" sx={{ bgcolor: 'background.surface' }}>
-            <Button>Scopri di più</Button>
+            <Button onClick={() => navigate(action)}>Scopri di più</Button>
           </ButtonGroup>
         </CardActions>
       )}
