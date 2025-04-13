@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@larapida/server-config": ["libs/server/config/src/index.ts"]
+      "@larapida/server-config": ["libs/server/config/src/index.ts"],
+      "@larapida/server-helpers": ["libs/server/helpers/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

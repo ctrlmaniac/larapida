@@ -3,7 +3,7 @@ import compression from 'compression';
 import morgan from 'morgan';
 import { constants } from '@larapida/server-config';
 import { join } from 'path';
-import ssrAppLoader from './helpers/ssrAppLoader';
+import { reactRouterServerLoader } from '@larapida/server-helpers';
 
 const app: Application = express();
 
@@ -18,7 +18,7 @@ app.use(express.static(join(__dirname, 'www/client')));
 
 /** WWW ssr application loader */
 const wwwModulePath = join(__dirname, 'www/server/index.js');
-ssrAppLoader(wwwModulePath, app);
+reactRouterServerLoader(wwwModulePath, app);
 
 app.listen(constants.PORT, () => {
   console.log(`App listening at http://localhost:${constants.PORT}`);

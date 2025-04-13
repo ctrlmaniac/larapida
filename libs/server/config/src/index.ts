@@ -1,1 +1,1 @@
-export * from './lib/server-config';
+export * from './lib/constants';
