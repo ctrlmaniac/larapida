@@ -6,6 +6,7 @@
   "scripts": {
     "prepare": "husky",
     "commitlint": "commitlint --edit",
+    "typeorm": "typeorm-ts-node-esm",
     "dev": "dotenvx run -- npx nx run server:serve"
   },
   "dependencies": {
@@ -24,7 +25,7 @@
     "express": "^5.1.0",
     "isbot": "^4.4.0",
     "morgan": "^1.10.0",
-    "mysql": "^2.18.1",
+    "mysql2": "^3.14.0",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-router": "^7.2.0",
@@ -74,6 +75,7 @@
     "jsdom": "~22.1.0",
     "nx": "20.7.2",
     "prettier": "^2.6.2",
+    "ts-node": "^10.9.2",
     "tslib": "^2.3.0",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.19.0",

@@ -2,19 +2,9 @@ import 'reflect-metadata';
 import express, { Application } from 'express';
 import compression from 'compression';
 import morgan from 'morgan';
-import { constants } from '@larapida/server-config';
 import { join } from 'path';
-import { reactRouterServerLoader } from '@larapida/server-helpers';
-import { appDataSource } from './app-data-source';
-
-appDataSource
-  .initialize()
-  .then(() => {
-    console.log('Data Source has been initialized!');
-  })
-  .catch((err) => {
-    console.error('Error during Data Source initialization:', err);
-  });
+import { reactRouterServerLoader, startServer } from '@larapida/server-helpers';
+import { AppDataSource } from './app-data-source';
 
 const app: Application = express();
 
@@ -32,6 +22,5 @@ app.use(express.static(join(__dirname, 'www/client')));
 const wwwModulePath = join(__dirname, 'www/server/index.js');
 reactRouterServerLoader(wwwModulePath, app);
 
-app.listen(constants.PORT, () => {
-  console.log(`App listening at http://localhost:${constants.PORT}`);
-});
+/** Start application */
+startServer(app, AppDataSource);

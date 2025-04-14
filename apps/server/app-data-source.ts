@@ -2,18 +2,20 @@ import { constants } from '@larapida/server-config';
 import { DataSource, DataSourceOptions } from 'typeorm';
 import { SeederOptions } from 'typeorm-extension';
 
-const options: DataSourceOptions & SeederOptions = {
+export const options: DataSourceOptions & SeederOptions = {
   type: 'mysql',
   host: 'localhost',
   port: 3306,
   username: constants.DB.USER,
   password: constants.DB.PASS,
   database: constants.DB.NAME,
-  entities: ['entities/*.ts'],
-  seeds: ['seeds/*.ts'],
+  entities: [__dirname + '/entities/*.ts'],
+  migrations: [__dirname + '/migrations/*.js'],
+  seeds: [__dirname + '/seeds/*.js'],
   logging: true,
-  synchronize: true,
-  seedTracking: false,
+  synchronize: false,
+  migrationsRun: true,
+  driver: require('mysql2'),
 };
 
-export const appDataSource = new DataSource(options);
+export const AppDataSource = new DataSource(options);
