@@ -5,4 +5,5 @@ export const constants = {
     USER: process.env.DB_USER,
     PASS: process.env.DB_PASS,
   },
+  saltRounds: 10,
 };

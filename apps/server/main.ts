@@ -1,15 +1,27 @@
+import 'reflect-metadata';
 import express, { Application } from 'express';
 import compression from 'compression';
 import morgan from 'morgan';
 import { constants } from '@larapida/server-config';
 import { join } from 'path';
 import { reactRouterServerLoader } from '@larapida/server-helpers';
+import { appDataSource } from './app-data-source';
+
+appDataSource
+  .initialize()
+  .then(() => {
+    console.log('Data Source has been initialized!');
+  })
+  .catch((err) => {
+    console.error('Error during Data Source initialization:', err);
+  });
 
 const app: Application = express();
 
 app.disable('x-powered-by');
 app.use(compression());
 app.use(morgan('tiny'));
+app.use(express.json());
 
 /** WWW hydrated client and static files */
 app.use('/assets', express.static(join(__dirname, 'www/client/assets')));

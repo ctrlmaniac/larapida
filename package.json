@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "prepare": "husky",
-    "commitlint": "commitlint --edit"
+    "commitlint": "commitlint --edit",
+    "dev": "dotenvx run -- npx nx run server:serve"
   },
   "dependencies": {
     "@dotenvx/dotenvx": "^1.39.1",
@@ -18,13 +19,18 @@
     "@react-router/node": "^7.2.0",
     "@react-router/serve": "^7.2.0",
     "@tabler/icons-react": "^3.31.0",
+    "bcrypt": "^5.1.1",
     "compression": "^1.8.0",
     "express": "^5.1.0",
     "isbot": "^4.4.0",
     "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
     "react": "19.0.0",
     "react-dom": "19.0.0",
-    "react-router": "^7.2.0"
+    "react-router": "^7.2.0",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.22",
+    "typeorm-extension": "^3.7.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.0",
@@ -46,6 +52,7 @@
     "@swc/cli": "~0.6.0",
     "@swc/core": "~1.5.7",
     "@swc/helpers": "~0.5.11",
+    "@types/bcrypt": "^5.0.2",
     "@types/compression": "^1.7.5",
     "@types/express": "^5.0.1",
     "@types/morgan": "^1.9.9",

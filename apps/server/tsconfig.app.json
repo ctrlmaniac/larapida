@@ -5,6 +5,6 @@
     "module": "commonjs",
     "types": ["node"]
   },
-  "include": ["main.ts", "www/**/*.js"],
+  "include": ["**/*.ts", "www/**/*.js"],
   "exclude": [".gitignore", "eslint*", "project.json", "tsconfig.*"]
 }
