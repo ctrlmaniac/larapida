@@ -1,10 +1,8 @@
-import 'reflect-metadata';
 import express, { Application } from 'express';
 import compression from 'compression';
 import morgan from 'morgan';
 import { join } from 'path';
 import { reactRouterServerLoader, startServer } from '@larapida/server-helpers';
-import { AppDataSource } from './app-data-source';
 
 const app: Application = express();
 
@@ -23,4 +21,4 @@ const wwwModulePath = join(__dirname, 'www/server/index.js');
 reactRouterServerLoader(wwwModulePath, app);
 
 /** Start application */
-startServer(app, AppDataSource);
+startServer(app);
