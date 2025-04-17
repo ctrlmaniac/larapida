@@ -7,9 +7,11 @@
   },
   "include": [
     "**/*.ts",
-    "www/**/*.js",
+    "types/**/*.ts",
     "prisma/prisma-client.ts",
-    "api/**/*.ts"
+    "www/**/*.js",
+    "api/**/*.ts",
+    "routes/**/*.ts"
   ],
   "exclude": [".gitignore", "eslint*", "project.json", "tsconfig.*"]
 }

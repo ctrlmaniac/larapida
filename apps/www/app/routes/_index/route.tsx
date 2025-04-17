@@ -1,6 +1,6 @@
 import { Container, Divider } from "@mui/joy";
 import { MetaFunction } from "react-router";
-import { Header, Hero } from "../../components";
+import { Header, Hero } from "../../ui/components";
 import ProdottiServizi from "./prodotti-servizi";
 
 export const meta: MetaFunction = () => {

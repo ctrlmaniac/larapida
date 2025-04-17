@@ -36,6 +36,11 @@
             "output": "www"
           },
           {
+            "input": "apps/server/admin",
+            "glob": "**/*",
+            "output": "admin"
+          },
+          {
             "input": "apps/server/prisma",
             "glob": "{migrations/**/*,schema.prisma,seed.ts}",
             "output": "prisma"
@@ -66,7 +71,10 @@
       "defaultConfiguration": "development",
       "dependsOn": [
         {
-          "projects": "www",
+          "projects": [
+            "www",
+            "admin"
+          ],
           "target": "build"
         },
         "build"

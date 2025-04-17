@@ -1,2 +1,6 @@
-www
+# react-router apps build dirs
+/admin
+/www
+
+# Prisma generated files
 prisma/prisma

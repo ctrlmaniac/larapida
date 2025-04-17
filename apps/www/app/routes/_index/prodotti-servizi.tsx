@@ -1,7 +1,7 @@
 import { Grid } from "@mui/system";
-import { CardMedia } from "../../components";
 import { Fragment } from "react";
 import { Typography } from "@mui/joy";
+import { CardMedia } from "../../ui/components";
 
 export default function ProdottiServizi() {
   return (
