@@ -26,16 +26,5 @@ export function verifyPassword(
   providedPassword: string,
   hashedPassword: string
 ): boolean {
-  if (!hashedPassword) {
-    return false; // Or handle this case as appropriate for your application
-  }
-
-  bcrypt.compare(providedPassword, hashedPassword, function (err, result) {
-    if (err) {
-      console.error('Error comparing passwords:', err);
-      return false;
-    }
-
-    return result;
-  });
+  return bcrypt.compareSync(providedPassword, hashedPassword);
 }

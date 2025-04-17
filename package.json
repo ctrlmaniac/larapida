@@ -10,7 +10,8 @@
     "dev": "dotenvx run -- npx nx run server:serve",
     "prisma:migrate:dev": "dotenvx run -- npx prisma migrate dev --schema=apps/server/prisma/schema.prisma",
     "prisma:generate": "dotenvx run -- npx prisma generate --schema=apps/server/prisma/schema.prisma",
-    "prisma:seed": "dotenvx run -- npx tsx apps/server/prisma/seed.ts"
+    "prisma:seed": "dotenvx run -- npx tsx apps/server/prisma/seed.ts",
+    "prisma:studio": "dotenvx run -- npx prisma studio --schema=apps/server/prisma/schema.prisma"
   },
   "dependencies": {
     "@dotenvx/dotenvx": "^1.39.1",
