@@ -1,36 +1,43 @@
 import { generateToken } from '@larapida/server-helpers';
-import { Request, Response } from 'express';
-import { getUserByEmailWithPassword } from './helpers/getUserByEmailWithPassword';
-import { verifyPassword } from './helpers/verifyPassword';
-import { prisma } from '../../../prisma/prisma-client';
+import { NextFunction, Request, Response } from 'express';
+import { getUserByEmailWithPassword, verifyPassword } from './services';
 
-export async function loginController(req: Request, res: Response) {
+export async function loginController(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  if (!req.body) {
+    res.status(400).json({ error: 'Email and password are required' });
+    next(new Error('Email and password are required'));
+  }
+
   const { email, password } = req.body;
 
   if (!email || !password) {
-    return res.status(400).json({ error: 'Email and password are required' });
+    res.status(400).json({ error: 'Email and password are required' });
   }
 
   try {
     const user = await getUserByEmailWithPassword(email);
 
     if (!user) {
-      return res.status(401).json({ error: 'Invalid email or password' });
+      res.status(401).json({ error: 'Invalid credentials' });
+      next(new Error('User not found'));
     }
 
     const isPasswordValid = verifyPassword(password, user.password);
 
     if (!isPasswordValid) {
-      return res.status(401).json({ error: 'Invalid email or password' });
+      res.status(401).json({ error: 'Invalid credentials' });
+      next(new Error('Invalid credentials'));
     }
 
     const token = generateToken({ id: user.id, email: user.email });
 
-    return res.json({ message: 'Login successful', token });
+    res.json({ message: 'Login successful', token });
   } catch (error) {
-    console.error('An unexpected error occurred:', error);
-    return res.status(500).json({ error: 'An unexpected error occurred' });
-  } finally {
-    await prisma.$disconnect();
+    console.error('Error during login:', error);
+    res.status(500).json({ error: 'Failed to login' });
   }
 }

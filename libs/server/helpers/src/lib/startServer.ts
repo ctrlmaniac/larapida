@@ -2,8 +2,10 @@ import { Application } from 'express';
 import { constants } from '@larapida/server-config';
 
 export async function startServer(app: Application) {
+  const PORT = Number.parseInt(process.env.PORT ?? '3000');
+
   try {
-    const server = app.listen(constants.PORT, () => {
+    const server = app.listen(PORT, () => {
       console.log(`App listening at http://localhost:${constants.PORT}`);
     });
 
