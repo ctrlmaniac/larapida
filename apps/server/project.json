@@ -37,7 +37,7 @@
           },
           {
             "input": "apps/server/prisma",
-            "glob": "**/*",
+            "glob": "{migrations/**/*,schema.prisma,seed.ts}",
             "output": "prisma"
           }
         ],

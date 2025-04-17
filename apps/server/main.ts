@@ -3,6 +3,7 @@ import compression from 'compression';
 import morgan from 'morgan';
 import { join } from 'path';
 import { reactRouterServerLoader, startServer } from '@larapida/server-helpers';
+import apiRouter from './api';
 
 const app: Application = express();
 
@@ -19,6 +20,9 @@ app.use(express.static(join(__dirname, 'www/client')));
 /** WWW ssr application loader */
 const wwwModulePath = join(__dirname, 'www/server/index.js');
 reactRouterServerLoader(wwwModulePath, app);
+
+/** API */
+app.use('/api', apiRouter);
 
 /** Start application */
 startServer(app);

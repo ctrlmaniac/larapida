@@ -5,6 +5,11 @@
     "module": "commonjs",
     "types": ["node"]
   },
-  "include": ["**/*.ts", "www/**/*.js"],
+  "include": [
+    "**/*.ts",
+    "www/**/*.js",
+    "prisma/prisma-client.ts",
+    "api/**/*.ts"
+  ],
   "exclude": [".gitignore", "eslint*", "project.json", "tsconfig.*"]
 }
