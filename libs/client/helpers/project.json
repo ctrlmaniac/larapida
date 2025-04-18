@@ -1,0 +1,9 @@
+{
+  "name": "client-helpers",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/client/helpers/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project client-helpers --web",
+  "targets": {}
+}

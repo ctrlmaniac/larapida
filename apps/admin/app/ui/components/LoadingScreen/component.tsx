@@ -4,7 +4,7 @@ import { CircularProgress } from "@mui/joy";
 
 export const LoadingScreen: FC = () => {
   return (
-    <Splash containerMaxWidth="sm">
+    <Splash containerMaxWidth="sm" alignContentCenter={true}>
       <CircularProgress />
     </Splash>
   )

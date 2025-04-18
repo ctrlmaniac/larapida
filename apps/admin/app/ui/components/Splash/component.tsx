@@ -13,12 +13,18 @@ interface SplashProps {
 
   /**
    * If true, the wallpaper will be displayed
-   * @default
+   * @default false
    */
   withWallpaper?: boolean;
+
+  /**
+   * If true the content of the container will be aligned to the center horizontally
+   * @default false
+   */
+  alignContentCenter?: boolean;
 }
 
-export const Splash: FC<SplashProps> = ({ children, containerMaxWidth = "sm", withWallpaper = true }) => {
+export const Splash: FC<SplashProps> = ({ children, containerMaxWidth = "sm", withWallpaper = false, alignContentCenter = false }) => {
   const sxRootComponent: SxProps = {
     display: 'flex',
     justifyContent: 'center',
@@ -35,7 +41,7 @@ export const Splash: FC<SplashProps> = ({ children, containerMaxWidth = "sm", wi
 
   return (
     <Box sx={sxRootComponentFinal}>
-      <Container maxWidth={containerMaxWidth}>
+      <Container maxWidth={containerMaxWidth} sx={{ textAlign: alignContentCenter ? 'center' : 'start' }}>
         {children}
       </Container>
     </Box>

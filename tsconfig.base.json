@@ -15,8 +15,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@larapida/client-helpers": ["libs/client/helpers/src/index.ts"],
       "@larapida/server-config": ["libs/server/config/src/index.ts"],
-      "@larapida/server-helpers": ["libs/server/helpers/src/index.ts"]
+      "@larapida/server-helpers": ["libs/server/helpers/src/index.ts"],
+      "@larapida/types": ["libs/types/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

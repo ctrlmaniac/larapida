@@ -7,7 +7,6 @@ import {
   type MetaFunction,
   type LinksFunction,
 } from 'react-router';
-import { LoadingScreen } from './ui/components';
 
 export const meta: MetaFunction = () => [
   {
@@ -44,10 +43,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </body>
     </html>
   );
-}
-
-export function HydrateFallback() {
-  return <LoadingScreen />
 }
 
 export default function App() {

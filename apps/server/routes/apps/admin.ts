@@ -1,27 +1,17 @@
 import { join } from 'path';
 import express, { Response, Router } from 'express';
 
-export function adminApp(appDir: string): Router {
+export function adminApp(appDirPath: string): Router {
   const router = Router();
 
-  router.use(
-    express.static(join(appDir, 'client/assets'), {
-      immutable: true,
-      maxAge: '1y',
-    })
-  );
+  router.use('/assets', express.static(join(appDirPath, 'client/assets')));
 
-  router.use(
-    express.static(join(appDir, 'client/static'), {
-      immutable: true,
-      maxAge: '1y',
-    })
-  );
+  router.use('/static', express.static(join(appDirPath, 'client/static')));
 
-  router.use(express.static(appDir, { maxAge: '1h' }));
+  router.use(express.static(appDirPath));
 
   router.all('/{*any}', (_, res: Response) => {
-    res.sendFile(join(appDir, 'client/index.html'));
+    res.sendFile(join(appDirPath, 'client/index.html'));
   });
 
   return router;
